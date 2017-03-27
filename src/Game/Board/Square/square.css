@@ -1,0 +1,26 @@
+.Square {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.Square-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #FFF;
+    text-align: center;
+    transition: background 0.5s;
+    box-shadow: 2px 2px 5px rgba(178, 195, 208, .7);
+    outline: 0;
+}
+
+.Square-button:hover {
+    background-color: #EEE;
+    cursor: pointer;
+}
+
+.Square-button.is-clicked {
+    background-color: #1287ff;
+}

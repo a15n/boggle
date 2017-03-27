@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './board.css';
+import Square from './Square/component';
 
 class Board extends Component {
   constructor() {
@@ -8,7 +9,9 @@ class Board extends Component {
     this.renderRow = this.renderRow.bind(this);
   }
   renderSquare(square) {
-    return <div key={square.key}>{square.letter}</div>
+    return (
+      <Square key={square.key} letter={square.letter}/>
+    )
   }
   renderRow(row, i) {
     i = 'row' + i;
