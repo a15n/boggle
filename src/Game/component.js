@@ -4,6 +4,7 @@ import Board from './Board/component';
 export default class Game extends Component {
   constructor() {
     super(...arguments);
+    this.onSquareClick = this.onSquareClick.bind(this);
 
     const dice = ['aaafrs', 'aaeeee', 'aafirs', 'adennn', 'aeeeem', 'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', 'ceiilt', 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', 'dhlnor', 'dhlnor', 'eiiitt', 'emottt', 'ensssu', 'fiprsy', 'gorrvw', 'iprrry', 'nootuw', 'ooottu'];
 
@@ -33,10 +34,14 @@ export default class Game extends Component {
       word: '',
     };
   }
+  onSquareClick(squareParams) {
+    const { letter } = squareParams;
+    console.log(letter);
+  }
   render() {
     const { matrix } = this.state;
     return (
-      <Board matrix={matrix}/>
+      <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
     )
   }
 }

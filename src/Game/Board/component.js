@@ -5,20 +5,25 @@ import Square from './Square/component';
 class Board extends Component {
   constructor() {
     super(...arguments);
-
     this.renderRow = this.renderRow.bind(this);
-  }
-  renderSquare(square) {
-    return (
-      <Square key={square.key} letter={square.letter}/>
-    )
+    this.renderSquare = this.renderSquare.bind(this);
   }
   renderRow(row, i) {
-    i = 'row' + i;
+    const rowKey = 'row' + i;
     return (
-      <div className="Board-row" key={i}>
+      <div className="Board-row" key={rowKey}>
         {row.map(this.renderSquare)}
       </div>
+    )
+  }
+  renderSquare(square) {
+    const { onSquareClick } = this.props;
+    return (
+      <Square
+        key={square.key}
+        letter={square.letter}
+        onClick={onSquareClick}
+      />
     )
   }
   render() {
@@ -34,6 +39,7 @@ class Board extends Component {
 
 Board.propTypes = {
   matrix: React.PropTypes.array.isRequired,
+  onSquareClick: React.PropTypes.func.isRequired,
 }
 
 
