@@ -41,15 +41,13 @@ export default class Game extends Component {
     const { index, letter } = squareParams
     const matrixCopy = [...matrix];
 
-    // TODO if !letter.length return
-
     // switch each square isClickable to false
     matrixCopy.forEach(arr => arr.forEach(s => s.isClickable = false));
 
     const [x, y] = index.split(',').map(n => Number(n));
     const clickedSquare = matrixCopy[y][x]; // 2d array stored as matrix[rowIndex][columnIndex]
     clickedSquare.isClicked = true;
-    clickedSquare.isClickable = true; // TODO make last clicked button reversable (state - 1)
+    clickedSquare.isClickable = false; // TODO make last clicked button reversable (state - 1)
 
     function toggleAdjacentSquares(x, y, matrix) {
       const neighboringPositions = [
@@ -81,8 +79,10 @@ export default class Game extends Component {
     })
   }
   submitWord() {
-    const wordsCopy = [...this.state.words];
-    const matrixCopy = [...this.state.matrix];
+    const { word, words, matrix } = this.state;
+    if (!word.length) return;
+    const wordsCopy = [...words];
+    const matrixCopy = [...matrix];
 
     wordsCopy.push(this.state.word);
 

@@ -7,10 +7,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .ScoreBoard-wordRow {
-  padding: 10px 0;
   color: #000;
 }
+
 .ScoreBoard-wordScore {
   float: right;
 }
