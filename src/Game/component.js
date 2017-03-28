@@ -9,28 +9,21 @@ export default class Game extends Component {
     this.onSquareClick = this.onSquareClick.bind(this);
     this.submitWord = this.submitWord.bind(this);
 
-    const dice = ['aaafrs', 'aaeeee', 'aafirs', 'adennn', 'aeeeem', 'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', 'ceiilt', 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', 'dhlnor', 'dhlnor', 'eiiitt', 'emottt', 'ensssu', 'fiprsy', 'gorrvw', 'iprrry', 'nootuw', 'ooottu'];
-
-    // TODO this dice.map is redundant. just pop/unshift the element during the x/y loops
-    const squares = dice.map((letters, i) => {
-      return {
-        letter: letters[Math.floor(Math.random() * letters.length)],
-        isClicked: false,
-        isClickable: true,
-        key: i,
-      };
-    });
+    const dice = ['AAAFRS', 'AAEEEE', 'AAFIRS', 'ADENNN', 'AEEEEM', 'AEEGMU', 'AEGMNN', 'AFIRSY', 'BJKQXZ', 'CCENST', 'CEIILT', 'CEILPT', 'CEIPST', 'DDHNOT', 'DHHLOR', 'DHLNOR', 'DHLNOR', 'EIIITT', 'EMOTTT', 'ENSSSU', 'FIPRSY', 'GORRVW', 'IPRRRY', 'NOOTUW', 'OOOTTU'];
 
     const size = 5;
     const matrix = [];
 
-    // TODO make this a util
     for (let y = 0; y < size; y++) {
       const row = [];
       for (let x = 0; x < size; x++) {
-        const square = squares.pop();
-        square.index = `${x},${y}`;
-        row.push(square);
+        const die = dice.pop();
+        row.push({
+          letter: die[Math.floor(Math.random() * die.length)],
+          isClicked: false,
+          isClickable: true,
+          index: `${x},${y}`,
+        });
       }
       matrix.push(row);
     }

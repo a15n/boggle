@@ -9,9 +9,8 @@ class Board extends Component {
     this.renderSquare = this.renderSquare.bind(this);
   }
   renderRow(row, i) {
-    const rowKey = 'row' + i;
     return (
-      <div className="Board-row" key={rowKey}>
+      <div className="Board-row" key={i}>
         {row.map(this.renderSquare)}
       </div>
     )
@@ -20,7 +19,7 @@ class Board extends Component {
     const { onSquareClick } = this.props;
     return (
       <Square
-        key={square.key}
+        key={square.index}
         letter={square.letter}
         index={square.index}
         isClickable={square.isClickable}
