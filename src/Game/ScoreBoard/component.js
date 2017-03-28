@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './ScoreBoard.css';
 
 class ScoreBoard extends Component {
-  constructor() {
-    super(...arguments);
-    this.renderWordsAndScores = this.renderWordsAndScores.bind(this);
-  }
   getPoints(l) {
     if (l < 3) {
       return 0;
@@ -23,23 +19,30 @@ class ScoreBoard extends Component {
       return 6;
     }
   }
-  renderWordsAndScores(word, i) {
+  renderWordsAndScores(wordScore, i) {
     return (
       <h3 key={i} className="ScoreBoard-wordRow">
-        {word} <span className="ScoreBoard-wordScore">{this.getPoints(word.length)}</span>
+        {wordScore.word} <span className="ScoreBoard-wordScore">{wordScore.score}</span>
       </h3>
     )
   }
   render() {
     const { words } = this.props;
+    const wordScores = words.map(word => {
+      return {
+        word: word,
+        score: this.getPoints(word.length)
+      }
+    });
+    const totalScore = wordScores.reduce((n, wordScore) => n + wordScore.score, 0);
     return (
       <div className="ScoreBoard">
         <div className="ScoreBoard-upper">
           <h3>HEADER</h3>
-          {words.map(this.renderWordsAndScores)}
+          {wordScores.map(this.renderWordsAndScores)}
         </div>
         <div className="ScoreBoard-lower">
-          <h3>TOTAL SCORE <span className="ScoreBoard-lowerScore">100</span></h3>
+          <h3>TOTAL SCORE <span className="ScoreBoard-lowerScore">{totalScore}</span></h3>
         </div>
       </div>
     )
