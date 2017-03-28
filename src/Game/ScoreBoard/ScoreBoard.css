@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.ScoreBoard-titleScore {
+  float: right;
+}
+
 .ScoreBoard-wordRow {
   color: #000;
 }

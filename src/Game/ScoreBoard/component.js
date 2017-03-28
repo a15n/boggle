@@ -28,7 +28,7 @@ class ScoreBoard extends Component {
   }
   render() {
     const { words } = this.props;
-    const wordScores = words.map(word => {
+    const wordScores = words.sort().map(word => {
       return {
         word: word,
         score: this.getPoints(word.length)
@@ -38,7 +38,7 @@ class ScoreBoard extends Component {
     return (
       <div className="ScoreBoard">
         <div className="ScoreBoard-upper">
-          <h3>HEADER</h3>
+          <h3>WORD <span className="ScoreBoard-titleScore">SCORE</span></h3>
           {wordScores.map(this.renderWordsAndScores)}
         </div>
         <div className="ScoreBoard-lower">
