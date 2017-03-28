@@ -1,6 +1,7 @@
 .Game {
   display: flex;
   justify-content: center;
+  align-items: stretch;
 }
 
 .Game-currentWord-title {
@@ -18,11 +19,12 @@ h2.Game-word {
 }
 
 .Game-header img {
-  width: 150px;
+  width: 200px;
   height: 100px;
   margin: 20px 0;
 }
 
 .Game-rightPane {
   margin-left: 20px;
+  display: flex;
 }

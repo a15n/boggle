@@ -34,7 +34,7 @@ class ScoreBoard extends Component {
         score: this.getPoints(word.length)
       }
     });
-    const totalScore = wordScores.reduce((n, wordScore) => n + wordScore.score, 0);
+    const totalScore = [...wordScores].reduce((n, wordScore) => n + wordScore.score, 0);
     return (
       <div className="ScoreBoard">
         <div className="ScoreBoard-upper">

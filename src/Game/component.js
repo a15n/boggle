@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './Game.css';
 import poggleLogoSrc from './poggle-logo.png';
 import Board from './Board/component';
+import Button from './Button/component';
 import ScoreBoard from './ScoreBoard/component';
-
 
 export default class Game extends Component {
   constructor() {
@@ -109,7 +109,7 @@ export default class Game extends Component {
             <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
             <h3 className="Game-currentWord-title">CURRENT WORD</h3>
             <h2 className="Game-word ">{word}</h2>
-            <button onClick={this.submitWord}>SUBMIT WORD</button>
+            <Button onClick={this.submitWord} text="SUBMIT WORD"/>
           </div>
           <div className="Game-rightPane">
             <ScoreBoard words={words}/>
