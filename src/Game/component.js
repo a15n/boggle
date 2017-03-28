@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import './Game.css';
 import Board from './Board/component';
+import ScoreBoard from './ScoreBoard/component';
 
 export default class Game extends Component {
   constructor() {
     super(...arguments);
     this.onSquareClick = this.onSquareClick.bind(this);
+    this.submitWord = this.submitWord.bind(this);
 
     const dice = ['aaafrs', 'aaeeee', 'aafirs', 'adennn', 'aeeeem', 'aeegmu', 'aegmnn', 'afirsy', 'bjkqxz', 'ccenst', 'ceiilt', 'ceilpt', 'ceipst', 'ddhnot', 'dhhlor', 'dhlnor', 'dhlnor', 'eiiitt', 'emottt', 'ensssu', 'fiprsy', 'gorrvw', 'iprrry', 'nootuw', 'ooottu'];
 
@@ -35,6 +38,7 @@ export default class Game extends Component {
     this.state = {
       matrix,
       word: '',
+      words: [],
     };
   }
   onSquareClick(squareParams) {
@@ -79,14 +83,37 @@ export default class Game extends Component {
       word: word + letter,
     })
   }
-  render() {
-    const { matrix, word } = this.state;
-    return (
-      <div>
-        <p>{word}</p>
-        <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
-      </div>
+  submitWord() {
+    const wordsCopy = [...this.state.words];
+    const matrixCopy = [...this.state.matrix];
 
+    wordsCopy.push(this.state.word);
+
+    matrixCopy.forEach(arr => arr.forEach(s => {
+      s.isClickable = true;
+      s.isClicked = false;
+    }));
+
+    this.setState({
+      matrix: matrixCopy,
+      words: wordsCopy,
+      word: '',
+    })
+  }
+  render() {
+    const { matrix, word, words } = this.state;
+    return (
+      <div className="Game">
+        <div className="leftPane">
+          <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
+          <h3>CURRENT WORD</h3>
+          <h2 className="Game-word">{word}</h2>
+          <button onClick={this.submitWord}>SUBMIT WORD</button>
+        </div>
+        <div className="rightPane">
+          <ScoreBoard words={words}/>
+        </div>
+      </div>
     )
   }
 }

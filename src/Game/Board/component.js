@@ -33,7 +33,6 @@ class Board extends Component {
     const { matrix } = this.props;
     return (
       <div>
-        <h2>board</h2>
         {matrix.map(this.renderRow)}
       </div>
     )

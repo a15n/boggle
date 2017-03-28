@@ -1,0 +1,7 @@
+.Game {
+  display: flex;
+}
+
+h2.Game-word {
+  height: 27px; /*maintains height when no text in h2, tied to h2*/
+}
