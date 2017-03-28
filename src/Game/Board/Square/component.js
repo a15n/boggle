@@ -17,7 +17,7 @@ class Square extends Component {
           id={index}
           onClick={() => onClick({letter, index})}
         >
-          {letter}
+          <h1>{letter}</h1>
         </button>
       </div>
     )

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './Game.css';
+import poggleLogoSrc from './poggle-logo.png';
 import Board from './Board/component';
 import ScoreBoard from './ScoreBoard/component';
+
 
 export default class Game extends Component {
   constructor() {
@@ -38,6 +40,8 @@ export default class Game extends Component {
     const { matrix, word } = this.state;
     const { index, letter } = squareParams
     const matrixCopy = [...matrix];
+
+    // TODO if !letter.length return
 
     // switch each square isClickable to false
     matrixCopy.forEach(arr => arr.forEach(s => s.isClickable = false));
@@ -96,15 +100,20 @@ export default class Game extends Component {
   render() {
     const { matrix, word, words } = this.state;
     return (
-      <div className="Game">
-        <div className="leftPane">
-          <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
-          <h3>CURRENT WORD</h3>
-          <h2 className="Game-word">{word}</h2>
-          <button onClick={this.submitWord}>SUBMIT WORD</button>
+      <div>
+        <div className="Game-header">
+          <img src={poggleLogoSrc} alt=""/>
         </div>
-        <div className="rightPane">
-          <ScoreBoard words={words}/>
+        <div className="Game">
+          <div className="leftPane">
+            <Board matrix={matrix} onSquareClick={this.onSquareClick}/>
+            <h3 className="Game-currentWord-title">CURRENT WORD</h3>
+            <h2 className="Game-word ">{word}</h2>
+            <button onClick={this.submitWord}>SUBMIT WORD</button>
+          </div>
+          <div className="Game-rightPane">
+            <ScoreBoard words={words}/>
+          </div>
         </div>
       </div>
     )

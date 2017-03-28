@@ -31,7 +31,7 @@ class Board extends Component {
   render() {
     const { matrix } = this.props;
     return (
-      <div>
+      <div className="Board">
         {matrix.map(this.renderRow)}
       </div>
     )

@@ -1,7 +1,28 @@
 .Game {
   display: flex;
+  justify-content: center;
+}
+
+.Game-currentWord-title {
+  text-align: center;
 }
 
 h2.Game-word {
+  text-align: center;
   height: 27px; /*maintains height when no text in h2, tied to h2*/
+}
+
+.Game-header {
+  display: flex;
+  justify-content: center;
+}
+
+.Game-header img {
+  width: 150px;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.Game-rightPane {
+  margin-left: 20px;
 }

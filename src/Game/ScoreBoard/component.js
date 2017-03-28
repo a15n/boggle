@@ -25,17 +25,22 @@ class ScoreBoard extends Component {
   }
   renderWordsAndScores(word, i) {
     return (
-      <div key={i}>
+      <h3 key={i} className="ScoreBoard-wordRow">
         {word} <span className="ScoreBoard-wordScore">{this.getPoints(word.length)}</span>
-      </div>
+      </h3>
     )
   }
   render() {
     const { words } = this.props;
     return (
-      <div>
-        <div>HEADER</div>
-        {words.map(this.renderWordsAndScores)}
+      <div className="ScoreBoard">
+        <div className="ScoreBoard-upper">
+          <h3>HEADER</h3>
+          {words.map(this.renderWordsAndScores)}
+        </div>
+        <div className="ScoreBoard-lower">
+          <h3>TOTAL SCORE <span className="ScoreBoard-lowerScore">100</span></h3>
+        </div>
       </div>
     )
   }

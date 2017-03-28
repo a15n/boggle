@@ -1,5 +1,11 @@
+.Board {
+  background-color: #dcf2ff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .Board-row {
   display: flex;
-  width: 500px;
-  height: 100px;
+  width: 400px;
+  height: 80px;
 }
