@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './square.css';
 
 class Square extends Component {
   render() {
-    const { letter, onClick } = this.props;
+    const { letter, index, isClickable, isClicked, onClick } = this.props;
+    const buttonClasses = classNames(
+      'Square-button',
+      {'is-clickable': isClickable},
+      {'is-clicked': isClicked},
+    );
     return (
       <div className="Square">
         <button
-          className="Square-button"
-          onClick={() => onClick({letter})}
+          className={buttonClasses}
+          id={index}
+          onClick={() => onClick({letter, index})}
         >
           {letter}
         </button>
@@ -19,6 +26,9 @@ class Square extends Component {
 
 Square.propTypes = {
   letter: React.PropTypes.string.isRequired,
+  index: React.PropTypes.string.isRequired,
+  isClickable: React.PropTypes.bool.isRequired,
+  isClicked: React.PropTypes.bool.isRequired,
   onClick: React.PropTypes.func.isRequired,
 }
 

@@ -22,6 +22,9 @@ class Board extends Component {
       <Square
         key={square.key}
         letter={square.letter}
+        index={square.index}
+        isClickable={square.isClickable}
+        isClicked={square.isClicked}
         onClick={onSquareClick}
       />
     )
